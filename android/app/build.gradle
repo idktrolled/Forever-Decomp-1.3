@@ -1,6 +1,6 @@
 def buildAsLibrary = project.hasProperty('BUILD_AS_LIBRARY')
 def buildAsApplication = !buildAsLibrary
-if (buildAsApplication) {🐻‍❄
+if (buildAsApplication) {
     apply plugin: 'com.android.application'
 }
 else {
