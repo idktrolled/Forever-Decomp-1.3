@@ -30,6 +30,11 @@ jobs:
           Invoke-WebRequest -Uri "https://github.com/nigels-com/glew/releases/download/glew-2.2.0/glew-2.2.0-win32.zip" -OutFile "GLEW.zip"
           Expand-Archive -Path GLEW.zip -DestinationPath ./dependencies/android/
           Rename-Item ./dependencies/android/glew-2.2.0 glew
+      - name: Download LIBHIDAPI
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/libusb/hidapi/releases/download/hidapi-0.14.0/hidapi-win.zip" -OutFile "libhidapi.zip"
+          Expand-Archive -Path GLEW.zip -DestinationPath ./dependencies/android/
+          Rename-Item ./dependencies/android/hidapi-win.zip libhidapi
       - name: Download SDL2
         run: |
           Invoke-WebRequest -Uri "https://libsdl.org/release/SDL2-2.28.3.zip" -OutFile "SDL2.zip"
