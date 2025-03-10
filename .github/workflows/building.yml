@@ -55,16 +55,16 @@ jobs:
           Copy-Item -Path ./dependencies/android/app/jni/src/dependencies/android/libogg/ -Destination ./dependencies/android/ -recurse
           Copy-Item -Path ./dependencies/android/config_types.h -Destination ./dependencies/android/libogg/include/ogg/
       - name: Set up Java
-        uses: actions/setup-java@main
+        uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
+          distribution: "zulu"
           java-version: 11
       - name: Build RSDKv4 Android
         working-directory: ./android
         run: |
-          ./gradlew.bat Build --no-daemon -PABIFILTERS="armeabi-v7a;arm64-v8a"
+          ./gradlew.bat assembleDebug --no-daemon -PABIFILTERS="armeabi-v7a;arm64-v8a" -PRETRO_DISABLE_PLUS
       - name: Upload artifact Android
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4
         with:
           name: v4-android
           path: ./android/app/build/outputs/apk
